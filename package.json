@@ -1,0 +1,59 @@
+{
+  "name": "mu-koan-generator",
+  "version": "1.0.0-dev",
+  "description": "A Koa scaffolding generator for JSON REST APIs",
+  "main": "bin/mu-koan",
+  "bin": {
+    "mu-koan": "bin/cli.js"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfantone/mu-koan-generator.git"
+  },
+  "keywords": [
+    "koa",
+    "koa2",
+    "generator",
+    "mu-koan",
+    "rest",
+    "scaffolding",
+    "json"
+  ],
+  "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nfantone/mu-koan-generator/issues"
+  },
+  "homepage": "https://github.com/nfantone/mu-koan-generator#readme",
+  "devDependencies": {
+    "eslint": "^3.0.1",
+    "eslint-config-semistandard": "^6.0.2",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-config-xo-space": "^0.14.0",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-codecov": "^2.0.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-exit": "0.0.2",
+    "gulp-if": "^2.0.1",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-mocha": "^2.2.0",
+    "gulp-release": "^1.0.6",
+    "gulp-util": "^3.0.7",
+    "pre-commit": "^1.1.3",
+    "should": "^9.0.2"
+  },
+  "dependencies": {
+    "cpr": "^1.1.2",
+    "empty-dir": "^0.2.0",
+    "lodash.invert": "^4.1.1",
+    "ncp": "^2.0.0",
+    "yargs": "^4.8.0"
+  }
+}

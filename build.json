@@ -1,0 +1,21 @@
+{
+  "paths": {
+    "src": ["app.js", "app/**/*.js"],
+    "test": ["test/**/*.test.js"]
+  },
+  "mocha": {
+    "require": ["should"]
+  },
+  "istanbul": {
+    "enforceThresholds": false,
+    "thresholds": {
+      "global": 80
+    }
+  },
+  "codecov": {
+    "src": "./coverage/lcov.info"
+  },
+  "eslint": {
+    "failOnError": true
+  }
+}

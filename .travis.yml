@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+- '5'
+- '6'
+branches:
+  only:
+  - master
+  - develop
+  - /^v?(\d\.){2}\d$/
+notifications:
+  email:
+  - nfantone@gmail.com
+cache:
+  bundler: true
+  directories:
+  - node_modules
+script: npm run validate && npm run coverage
+deploy:
+  provider: npm
+  email: nfantone@gmail.com
+  api_key:
+    secure: IwVmuzI14vnnB62hfh2T1BiTaMihXSh1aII8N/uV11vNlK6ZJfN/hpahxtRV04blhcCjR8FSoUe3c1o+PdcAqSj4kUH60MaiVleNi6WEm6hfaG3cWfaqxnShfX/W0hYT5bP8u/LHZph6LNMO6vsXrD+3oHHqGSBL1tEo3H7rYTnlC0xnPjSx88nvoT+Ks5afmoqn/vab/1TbCcXLE6Bepo/YXYNKphoSft3i2LoxEHXtaIl1f/XovL+cWD+k+jX7uOgxoW8T2fCPygEBDcVKxXXB39GddISO/L+iaipCtwXgO45xCrpMH51PZF318tXnRRzB0qc70/y1zEccDE8EDakezessTNdcJVDCDeDMxvbBsZZ12Se/4X2/qdq9RToCPNhjbtGdfSjGebJJIhhDpoPB0nLS+Z/DnEyAL09WLJKEx2jjgFrkYkY9sfq8XvEXdzlCPar8Fqa+zjijKQLfEoKDz344vVHZMqpwjEfItJdVR4u1vOX2JXwDSLpC3GztEuBLDz4g9+y5JvQof0xLhiRAtr1DLwz9sRLxWDoLs6IRhrp3mJJHc0t00g1MWnjwl5mpvj+EAdHXfoTBP9jJsdX+xBpVlUdt3luZLAoFThwFcNmbzenyTllayNT73q7vY/QpUUGATvpBlhzYiDlZfoY4BlxWljMOdFPgaJwto90=
+  on:
+    tags: true
+    repo: nfantone/mu-koan-generator
+    node_js: '5'

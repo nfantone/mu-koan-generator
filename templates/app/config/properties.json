@@ -1,0 +1,25 @@
+{
+  "koa": {
+    "hostname": "localhost",
+    "port": 3000,
+    "routes": {
+      "prefix": "/api"
+    }
+  },
+  "morgan": {
+    "format": "combined"
+  },
+  "logger": {
+    "colorize": true,
+    "level": "debug",
+    "timestamp": "YYYY-MM-DD HH:mm:ss,SSS",
+    "handleExceptions": true,
+    "humanReadableUnhandledException": true
+  },
+  "jwt": {
+    "options": {
+      "secret": "!7RTTCny5Q3YK;y:",
+      "passthrough": true
+    }
+  }
+}
