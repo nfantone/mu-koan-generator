@@ -50,6 +50,7 @@
     "should": "^9.0.2"
   },
   "dependencies": {
+    "child-process-promise": "^2.0.3",
     "cpr": "^1.1.2",
     "empty-dir": "^0.2.0",
     "lodash.invert": "^4.1.1",
