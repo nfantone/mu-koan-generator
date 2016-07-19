@@ -2,7 +2,12 @@
   "name": "mu-koan-generator",
   "version": "1.0.0-dev",
   "description": "A Koa scaffolding generator for JSON REST APIs",
-  "main": "bin/mu-koan",
+  "main": "bin/cli.js",
+  "files": [
+    "templates",
+    "bin",
+    "lib"
+  ],
   "bin": {
     "mu-koan": "bin/cli.js"
   },
