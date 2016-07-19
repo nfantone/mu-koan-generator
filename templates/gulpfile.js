@@ -56,7 +56,7 @@ gulp.task('eslint', () =>
   gulp.src(config.paths.src)
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.if(config.eslint.failOnError, $.eslint.failOnError()))
+    .pipe($.if(config.eslint.failOnError, $.eslint.failAfterError()))
 );
 
 /**
