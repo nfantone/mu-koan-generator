@@ -34,14 +34,35 @@ info: [mu-koan]    Created /home/you/dev/foo/app/routes/status.js
 info: [mu-koan]    Created /home/you/dev/foo/app/server.js
 info: [mu-koan]    Created /home/you/dev/foo/build.json
 info: [mu-koan]    Created /home/you/dev/foo/gulpfile.js
-info: [mu-koan]    Done
 ```
+
+This will run `npm init` and `npm install` after generating the starting scaffolding.
 
 - Fire it up:
 
 ```bash
 $ npm start
 ```
+
+- Check everything's working as expected by requesting `/api/status`. In a new terminal session, run:
+
+```
+$ curl http://localhost:3000/api/status
+{
+  "success": false,
+  "name": "my-awesome-api",
+  "version": "1.0.0-dev",
+  "timestamp": "Jul 19, 2016 4:31 PM",
+  "process": {
+    "platform": "linux",
+    "pid": 24238,
+    "mem": {
+      "rss": 49418240,
+      "heapTotal": 34317856,
+      "heapUsed": 23951544
+    }
+ }
+ ```
 
 ## Command line interface
 
