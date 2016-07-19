@@ -5,10 +5,9 @@
  * A command line utility to generate
  * a Koa 2.0.0+ REST API scaffolding.
  */
-const spawn = require('child-process-promise').spawn;
 const path = require('path');
 const argv = require('yargs')
-  .usage('Usage: mu-koan [name]')
+  .usage('Usage: mu-koan [name] [-f --force] [-v]')
   .help('h')
   .alias('h', 'help')
   .version(function() {
@@ -18,18 +17,27 @@ const argv = require('yargs')
     // If no name was provided, resolve to cwd
     return path.basename(path.resolve(process.cwd()));
   })
+  .alias('f', 'force')
   .count('verbose')
   .alias('v', 'verbose')
   .describe('v', 'Sets the verbosity level for log messages')
   .alias('V', 'version')
   .epilog('https://github.com/nfantone/mu-koan-generator').argv;
 
-const log = require('./logger')(argv.verbose);
-const emptyDir = require('empty-dir');
-const cpr = require('cpr');
+const log = require('../lib/logger')(argv.verbose);
+const dir = require('../lib/dir');
+const npm = require('../lib/npm-helper');
 
 const TEMPLATES_DIR = path.join(__dirname, '..', 'templates');
 
+/**
+ * Log a message and exit this process.
+ *
+ * @method exit
+ * @param  {String} err   Error log message
+ * @param  {String} level Logger level
+ * @return {undefined}
+ */
 function exit(err, level) {
   level = level || 'error';
   if (err) {
@@ -42,57 +50,51 @@ function exit(err, level) {
 }
 
 /**
- * Install all npm dependencies declared on package.json.
- * Redirects npm's stderr to this process' stderr.
+ * Generates a new API scaffolding, runs `npm init` and
+ * `npm install`.
  *
- * @method installDependencies
- * @return {Stream}
+ * @method main
+ * @return {[type]} [description]
  */
-function installDependencies() {
-  log.info('Installing npm dependencies (this may take a while)');
-  return spawn('npm', ['install'], {
-    stdout: 'inherit',
-    stderr: 'inherit'
-  });
-}
-
-function runNpmInit() {
-  log.debug('Initializing npm project');
-  return spawn('npm', ['init'], {
-    stdio: 'inherit',
-    stdout: 'inherit'
-  });
-}
-
 function main() {
   var destinationPath = process.cwd() || '.';
+  destinationPath = path.resolve(destinationPath);
 
   // Check if CWD is not empty
-  emptyDir(destinationPath, (err, result) => {
-    if (err) {
-      return exit(err);
-    }
-    if (result) {
-      log.info('Creating project "%s" into [%s]', argv.name, destinationPath);
+  if (dir.isEmpty(destinationPath)) {
+    log.info('Creating project "%s" into [%s]', argv.name, destinationPath);
 
-      // Copy everything under ./templates to CWD
-      cpr(TEMPLATES_DIR, destinationPath, {
-        confirm: true
-      }, (err, files) => {
-        if (err) {
-          return exit(err);
-        }
-        files.forEach((file) => log.info('Created %s', file));
-        runNpmInit()
-          .then(() => installDependencies())
-          .then(() => log.info('Done'))
-          .catch(log.error);
-      });
-    } else {
-      return exit(`destination [${destinationPath}] is not empty`, 'warn');
-    }
-  });
+    // Copy everything under ./templates to CWD
+    dir.copy(TEMPLATES_DIR, destinationPath, {
+      confirm: true
+    }, (err, files) => {
+      if (err) {
+        return exit(err);
+      }
+      files.forEach((file) => log.info('Created %s', file));
+
+      log.debug('Initializing npm project');
+      return npm.init()
+        .then(() => {
+          log.info('Installing npm dependencies (this may take a while)...');
+          return npm.install();
+        })
+        .then(() => log.info('Done ("npm start" to begin)'))
+        .catch(exit);
+    });
+  } else if (argv.force) {
+    log.warn(`Removing everything under [${destinationPath}]`);
+    dir.clean(destinationPath);
+    // Retry project generation
+    return main();
+  } else {
+    return exit(`destination [${destinationPath}] is not empty`, 'warn');
+  }
 }
 
-// Run CLI generator
-main();
+try {
+  // Run CLI generator
+  main();
+} catch (err) {
+  exit(err);
+}
