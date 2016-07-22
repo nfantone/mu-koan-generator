@@ -80,13 +80,16 @@ $ curl http://localhost:3000/api/status
 ## Command line interface
 
 ```sh
-Usage: mu-koan [name]
+Usage: mu-koan [-f --force] [-v]
 
 Options:
   -h, --help     Show help                                             [boolean]
   -v, --verbose  Sets the verbosity level for log messages               [count]
   -V, --version  Show version number                                   [boolean]
   --name                                            [default: (generated-value)]
+
+https://github.com/nfantone/mu-koan-generator
+
 
 https://github.com/nfantone/mu-koan-generator
 ```
