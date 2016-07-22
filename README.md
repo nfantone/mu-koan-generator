@@ -75,12 +75,12 @@ $ curl http://localhost:3000/api/status
  }
  ```
 
- > You can change or remove the `/api` namespace by modifying `"koa.routes.prefix"` option on `app/config/properties.json` of by starting the API with `npm start -- --koa.routes.prefix foo`.
+ > You can change or remove the `/api` namespace by modifying `"koa.routes.prefix"` option on `app/config/properties.json` or by starting the API with `npm start -- --koa.routes.prefix foo`.
 
 ## Command line interface
 
 ```sh
-Usage: mu-koan [name]
+Usage: mu-koan [-f --force] [-v]
 
 Options:
   -h, --help     Show help                                             [boolean]
@@ -89,12 +89,15 @@ Options:
   --name                                            [default: (generated-value)]
 
 https://github.com/nfantone/mu-koan-generator
+
+
+https://github.com/nfantone/mu-koan-generator
 ```
 
 ## Features
-Along with a working webserver, the generator creates some common files that adds additional functionality or helps you follow standard practices, such as:
+Along with a working webserver, the generator creates some common files that feature additional functionality or help you follow standard practices, such as:
 
-- A [gulpfile.js][2] with some common tasks such as `gulp eslint` for linting or `gulp nodemon` to start a [nodemon] process.
+- A [gulpfile.js][2] with some common tasks like `gulp eslint` for linting or `gulp nodemon` to start a [nodemon][3] process.
 - Linting rules based on [xo-space][4] and [semistandard][5] ESLINT configurations.
 - An `.editorconfig` file.
 - A `.gitignore` with many common entries (thanks to https://gitignore.io).
