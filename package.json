@@ -1,7 +1,7 @@
 {
   "name": "mu-koan-generator",
-  "version": "1.0.2-dev",
-  "codename": "Sensationistic samadhi",
+  "version": "1.1.0",
+  "codename": "Sensual samadhi",
   "description": "A Koa scaffolding generator for JSON REST APIs",
   "main": "bin/cli.js",
   "files": [
