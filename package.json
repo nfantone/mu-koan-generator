@@ -1,6 +1,7 @@
 {
   "name": "mu-koan-generator",
   "version": "1.0.0-dev",
+  "codename": "Sensationistic samadhi",
   "description": "A Koa scaffolding generator for JSON REST APIs",
   "main": "bin/cli.js",
   "files": [
@@ -13,7 +14,8 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "test": "gulp test"
+    "coverage": "gulp coverage",
+    "validate": "gulp validate"
   },
   "repository": {
     "type": "git",
