@@ -22,7 +22,7 @@ module.exports = function(router) {
   router.get('/status', (ctx, next) => {
     ctx.status = 200;
     ctx.body = {
-      success: false,
+      success: true,
       name: pck.name,
       version: pck.version,
       codename: pck.codename,
