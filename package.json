@@ -1,14 +1,21 @@
 {
   "name": "mu-koan-generator",
-  "version": "1.0.0-dev",
+  "version": "1.0.0",
+  "codename": "Sensationistic samadhi",
   "description": "A Koa scaffolding generator for JSON REST APIs",
-  "main": "bin/mu-koan",
+  "main": "bin/cli.js",
+  "files": [
+    "templates",
+    "bin",
+    "lib"
+  ],
   "bin": {
     "mu-koan": "bin/cli.js"
   },
   "preferGlobal": true,
   "scripts": {
-    "test": "gulp test"
+    "coverage": "gulp coverage",
+    "validate": "gulp validate"
   },
   "repository": {
     "type": "git",
@@ -17,9 +24,11 @@
   "keywords": [
     "koa",
     "koa2",
+    "koa 2",
     "generator",
     "mu-koan",
     "rest",
+    "api",
     "scaffolding",
     "json"
   ],
@@ -33,6 +42,7 @@
     "eslint": "^3.0.1",
     "eslint-config-semistandard": "^6.0.2",
     "eslint-config-standard": "^5.3.5",
+    "eslint-config-xo": "^0.15.3",
     "eslint-config-xo-space": "^0.14.0",
     "eslint-plugin-promise": "^2.0.0",
     "eslint-plugin-standard": "^2.0.0",
@@ -54,7 +64,9 @@
     "cpr": "^1.1.2",
     "empty-dir": "^0.2.0",
     "fs-extra": "^0.30.0",
+    "jsonfile": "^2.3.1",
     "lodash.invert": "^4.1.1",
+    "winston": "^2.2.0",
     "yargs": "^4.8.0"
   }
 }

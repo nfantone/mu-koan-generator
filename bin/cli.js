@@ -27,8 +27,7 @@ const argv = require('yargs')
 const log = require('../lib/logger')(argv.verbose);
 const dir = require('../lib/dir');
 const npm = require('../lib/npm-helper');
-
-const TEMPLATES_DIR = path.join(__dirname, '..', 'templates');
+const TEMPLATES_DIR = require('../lib/templates-path');
 
 /**
  * Log a message and exit this process.
@@ -66,6 +65,7 @@ function main() {
 
     // Copy everything under ./templates to CWD
     dir.copy(TEMPLATES_DIR, destinationPath, {
+      filter: /^\/?(.*\/)*_/,
       confirm: true
     }, (err, files) => {
       if (err) {
@@ -76,10 +76,15 @@ function main() {
       log.debug('Initializing npm project');
       return npm.init()
         .then(() => {
-          log.info('Installing npm dependencies (this may take a while)...');
+          log.debug('Added dependencies and devDependencies to package.json');
+          log.info('Installing npm dependencies');
           return npm.install();
         })
-        .then(() => log.info('Done ("npm start" to begin)'))
+        .then(() => {
+          log.silly('Project creation finished');
+          log.info('You may run <npm start> now');
+          log.info('Done');
+        })
         .catch(exit);
     });
   } else if (argv.force) {

@@ -68,10 +68,10 @@ gulp.task('validate', ['eslint', 'test']);
  *
  * `gulp coverage`
  */
-gulp.task('coverage', () => {
-  return gulp.src(config.codecov.src)
-    .pipe($.codecov());
-});
+gulp.task('coverage', () =>
+  gulp.src(config.codecov.src)
+    .pipe($.codecov())
+);
 
 /**
  * Runs 'validate'.

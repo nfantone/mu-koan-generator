@@ -1,7 +1,4 @@
 {
-  "description": "A JSON REST API generated with mu-koan(1)",
-  "version": "1.0.0-dev",
-  "main": "app.js",
   "files": [
     "app.js",
     "app"
@@ -10,7 +7,6 @@
     "test": "gulp test",
     "start": "gulp"
   },
-  "repository": {},
   "devDependencies": {
     "eslint": "^3.1.1",
     "eslint-config-semistandard": "^6.0.2",
@@ -44,6 +40,5 @@
     "mu-koan-server": "^1.0.0",
     "nconf": "^0.8.4",
     "winston": "^2.2.0"
-  },
-  "license": "MIT"
+  }
 }
