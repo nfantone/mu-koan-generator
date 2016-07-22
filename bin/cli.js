@@ -7,16 +7,10 @@
  */
 const path = require('path');
 const argv = require('yargs')
-  .usage('Usage: mu-koan [name] [-f --force] [-v]')
+  .usage('Usage: mu-koan [-f --force] [-vvv]')
   .help('h')
   .alias('h', 'help')
-  .version(function() {
-    return require('./package').version;
-  })
-  .default('name', () => {
-    // If no name was provided, resolve to cwd
-    return path.basename(path.resolve(process.cwd()));
-  })
+  .version(() => require('../package').version)
   .alias('f', 'force')
   .count('verbose')
   .alias('v', 'verbose')
@@ -61,7 +55,7 @@ function main() {
 
   // Check if CWD is not empty
   if (dir.isEmpty(destinationPath)) {
-    log.info('Creating project "%s" into [%s]', argv.name, destinationPath);
+    log.info('Creating new project into [%s]', destinationPath);
 
     // Copy everything under ./templates to CWD
     dir.copy(TEMPLATES_DIR, destinationPath, {
