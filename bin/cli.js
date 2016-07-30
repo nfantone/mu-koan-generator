@@ -18,6 +18,7 @@ const argv = require('yargs')
   .alias('V', 'version')
   .epilog('https://github.com/nfantone/mu-koan-generator').argv;
 
+const fs = require('fs-extra');
 const log = require('../lib/logger')(argv.verbose);
 const dir = require('../lib/dir');
 const npm = require('../lib/npm-helper');
@@ -69,6 +70,11 @@ function main() {
 
       log.debug('Initializing npm project');
       return npm.init()
+        .then(() => {
+          log.info('Generating a .gitignore file');
+          // Manually move .gitignore file
+          return fs.copySync(path.resolve(TEMPLATES_DIR, '_gitignore'), '.gitignore');
+        })
         .then(() => {
           log.debug('Added dependencies and devDependencies to package.json');
           log.info('Installing npm dependencies');
