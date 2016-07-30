@@ -10,7 +10,10 @@ const DEFAULT_ENVIRONMENT = 'development';
 
 nconf
   .argv()
-  .env('_')
+  .env({
+    separator: '_',
+    lowerCase: true
+  })
   .file({
     file: path.join(__dirname, 'properties.json')
   })
