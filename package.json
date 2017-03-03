@@ -67,7 +67,7 @@
     "jsonfile": "^2.4.0",
     "lodash.invert": "^4.3.0",
     "winston": "^2.3.0",
-    "yargs": "^6.5.0"
+    "yargs": "^7.0.1"
   },
   "pre-commit": [
     "validate"
