@@ -40,7 +40,7 @@
   "homepage": "https://github.com/nfantone/mu-koan-generator#readme",
   "devDependencies": {
     "eslint": "^3.11.1",
-    "eslint-config-semistandard": "^7.0.0",
+    "eslint-config-semistandard": "^8.0.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-config-xo": "^0.17.0",
     "eslint-config-xo-space": "^0.15.0",
