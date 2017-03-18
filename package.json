@@ -42,7 +42,7 @@
     "eslint": "^3.11.1",
     "eslint-config-semistandard": "^8.0.0",
     "eslint-config-standard": "^8.0.0-beta.1",
-    "eslint-config-xo": "^0.17.0",
+    "eslint-config-xo": "^0.18.0",
     "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
